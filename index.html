@@ -24,31 +24,32 @@
         <div class="container">
             <div id="searchContainer">
                 <h5>Search for a City:</h5>
-                <input class="searchControl" type="text" placeholder="City Name">
+                <input class="searchControl" type="text" placeholder="City Name or Zipcode" id="searchInput">
                 <button class="searchControl" id="searchBtn">Search</button>
             </div>
             <!-- Current day forecast -->
             <div id="todaysWeather">
-                <h1>
+                <div>
                     <span id="cityHeader"></span>
                     <span id="currentDate"></span>
-                    <span id="documentIconImg"></span>
+                    <div><img id="documentIconImg"></div>
                 </h1>
                 <div id="temperature"></div>
-                <div id="Humidity"></div>
-                <div id="Wind Speed"></div>
-                <div id="UV Index"></div>
+                <div id="humidity"></div>
+                <div id="windSpeed"></div>
+                <div id="UV-Index"></div>
             </div>
             <!-- Forecaset for next 5 days-->
             <div id="weatherContainer">
                 <div id="weatherDescription">
                     <h1 id="dayPlusOne"></h1>
                     <div id="weatherMain">
+                        <div id="weatherDescriptionHeader"></div>
                         <div><img id="documentIconImg"></div>
                     </div>
                     <hr>
-                    <div id="temperature" class="bottom-details"></div>
-                    <div id="humidity" class="bottom-details"></div>
+                    <div id="temperature" class="bottomDetails"></div>
+                    <div id="humidity" class="bottomDetails"></div>
                 </div>
             </div>
 
