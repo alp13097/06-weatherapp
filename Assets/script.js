@@ -2,10 +2,19 @@
 const time = document.getElementById("currentDay");
 
 setInterval(() => {
-    const now =  moment();
-    const humanReadable = now.format('(M/MM/YYYY)');
+    const now0 =  moment();
+    const humanReadable0 = now0.format('(M/MM/YYYY)');
 
-    time.textContent = humanReadable;    
+    time.textContent = humanReadable0;    
+}, 1000)
+
+const today = document.getElementById("currentDate");
+
+setInterval(() => {
+    const now1 =  moment();
+    const humanReadable1 = now1.format('(M/MM/YYYY)');
+
+    today.textContent = humanReadable1;    
 }, 1000)
 
 
@@ -56,7 +65,6 @@ function init(resultFromServer) {
             break;
     
         default:
-            document.body.style.backgroundImage = 'url("Assets/Photos/clear.jpg")';
             break;
     }
 
@@ -69,6 +77,27 @@ function init(resultFromServer) {
     let uVIndex = document.getElementById('UV-Index');
 
     weatherIcon.src = 'http://openweathermap.org/img/w/' + resultFromServer.weather[0].icon + '.png';
+
+    let resultDescription = resultFromServer.weather[0].description;
+    weatherDescriptionHeader.innerText = resultDescription.charAt(0).toUpperCase() + resultDescription.slice(1);
+
+    temperatureElement.innerHTML = Math.floor(resultFromServer.main.temp) + '&#176';
+    windSpeedElement.innerHTML = 'Wind Speed: ' + Math.floor(resultFromServer.wind.speed) + ' m/s';
+    cityHeader.innerHTML = resultFromServer.name;
+    humidityElement.innerHTML = 'Humidity: ' + resultFromServer.main.humidity + '%';
+
+    setPositionForWeatherInfo();
+}
+
+function setPositionForWeatherInfo() {
+    let weatherContainer = document.getElementById('weatherContainer');
+    let weatherContainerHeight = weatherContainer.clientHeight;
+    let weatherContainerWidth = weatherContainer.clientWidth;
+
+    weatherContainer.style.left = `calc(50% = ${weatherContainerWidth/2}px)`;
+    weatherContainer.style.top = `calc(50% - ${weatherContainerHeight/1.3}px)`;
+    weatherContainer.style.visibility = 'visible';
+
 }
 
 document.getElementById("searchBtn").addEventListener("click", () => {
